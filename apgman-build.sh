@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+RULE=$1
+SYMM=$2
+
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
+
+if [ -z "$RULE" ]; then
+    echo "No rule provided, defaulting to 'b3s23'"
+    RULE="b3s23"
+fi
+if [ -z "$SYMM" ]; then
+    echo "No symmetry provided, defaulting to 'C1'"
+    SYMM="C1"
+fi
+
+
+INSTALL_DIR=$($SCRIPT_DIR/apgman-util-get-install-dir.sh)
+
+cd "$INSTALL_DIR/apgmera" || exit 1
+
+echo "Building apgsearch with rule $RULE and symmetry $SYMM..."
+
+./recompile.sh -rule "$RULE" --symmetry "$SYMM"
+
+mv ./apgluxe ../builds/apgluxe-$RULE-$SYMM
+
+echo "Done!"
+
+exit 0
