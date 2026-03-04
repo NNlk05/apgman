@@ -21,7 +21,7 @@ cd "$INSTALL_DIR/apgmera" || exit 1
 
 echo "Building apgsearch with rule $RULE and symmetry $SYMM..."
 
-./recompile.sh -rule "$RULE" --symmetry "$SYMM"
+./recompile.sh --rule "$RULE" --symmetry "$SYMM"
 
 mv ./apgluxe ../builds/apgluxe-$RULE-$SYMM
 
