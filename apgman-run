@@ -2,7 +2,7 @@
 
 RULE=$1
 SYMM=$2
-ARGS=$3
+shift 2
 
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 
@@ -22,6 +22,6 @@ cd "$INSTALL_DIR/builds" || exit 1
 
 echo "Running apgsearch with rule $RULE and symmetry $SYMM..."
 
-./apgluxe-$RULE-$SYMM $ARGS
+./apgluxe-$RULE-$SYMM "$@"
 
 exit 0
