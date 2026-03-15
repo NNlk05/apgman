@@ -55,7 +55,7 @@ Rule defaults to b3s23, and symm defaults to C1 as a failsafe in case apgsearch 
 ### Running a Build
 
 ```bash
-./apgman-run rule symm
+./apgman-run rule symm options -k 0000000000000000000000000000000000000000000000000000000000000000 -n 1000000 ...
 ```
 
 Again, rule defaults to b3s23, and symm defaults to C1 as a failsafe in case apgsearch changes its behaviour.
