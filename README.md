@@ -34,20 +34,20 @@ cd apgman
 To install apgsearch, run:
 
 ```bash
-./apgman-init.sh
+./apgman-init
 ```
 
 It defaults the install location to $HOME/.apgman
 You can change it by running:
 
 ```bash
-./apgman-init.sh /path/to/your/install/dir/
+./apgman-init /path/to/your/install/dir/
 ```
 
 ### Building Apgsearch
 
 ```bash
-./apgman-build.sh rule symm
+./apgman-build rule symm
 ```
 
 Rule defaults to b3s23, and symm defaults to C1 as a failsafe in case apgsearch changes its behaviour.
@@ -55,7 +55,7 @@ Rule defaults to b3s23, and symm defaults to C1 as a failsafe in case apgsearch 
 ### Running a Build
 
 ```bash
-./apgman-run.sh rule symm
+./apgman-run rule symm
 ```
 
 Again, rule defaults to b3s23, and symm defaults to C1 as a failsafe in case apgsearch changes its behaviour.
