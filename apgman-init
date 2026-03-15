@@ -36,6 +36,6 @@ fi
 
 
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
-"$SCRIPT_DIR/apgman-set-path.sh" "$INSTALL_DIR"
+"$SCRIPT_DIR/apgman-set-path" "$INSTALL_DIR"
 
 exit 0

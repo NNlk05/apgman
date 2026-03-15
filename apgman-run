@@ -16,7 +16,7 @@ if [ -z "$SYMM" ]; then
 fi
 
 
-INSTALL_DIR=$($SCRIPT_DIR/apgman-util-get-install-dir.sh)
+INSTALL_DIR=$($SCRIPT_DIR/apgman-get-install-dir)
 
 cd "$INSTALL_DIR/builds" || exit 1
 

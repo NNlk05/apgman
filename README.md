@@ -3,7 +3,7 @@
 APFsearch MANager
 I got tired of compiling and recompiling apgsearch, and managing all of the builds, so I wrote this
 
-> **\*Note:** apgman is a toolkit of Bash `.sh` shell scripts.\*
+> **\*Note:** apgman is a toolkit of Bash shell scripts.\*
 > _On Windows, you have to install Cygwin or similar_
 
 ## Functions
