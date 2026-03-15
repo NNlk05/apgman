@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+RULE=$1
+
+INSTALL_DIR=$($SCRIPT_DIR/apgman-get-install-dir)
+
+if [ -z "$RULE" ]; then
+    echo "No rule provided"
+fi
+
+if [[ ! "$RULE" =~ \.rule$ ]]; then
+    echo "Error: Rule must be a .rule file"
+    exit 1
+fi
+
+cp "$RULE" "$INSTALL_DIR/apgmera"
