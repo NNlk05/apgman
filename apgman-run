@@ -19,7 +19,6 @@ fi
 INSTALL_DIR=$($SCRIPT_DIR/apgman-get-install-dir)
 
 cd "$INSTALL_DIR/builds" || exit 1
-
 echo "Running apgsearch with rule $RULE and symmetry $SYMM..."
 
 ./apgluxe-$RULE-$SYMM "$@"
