@@ -16,8 +16,6 @@ APGMAN_PATH_FILE="$HOME/.apgman/path-exports"
 echo "# apgman path exports" > "$APGMAN_PATH_FILE"
 echo "export PATH=\$PATH:$BUILDS_DIR" >> "$APGMAN_PATH_FILE"
 echo "export PATH=\$PATH:$SCRIPTS_DIR" >> "$APGMAN_PATH_FILE"
-echo "export PYTHONPATH=\$PYTHONPATH:$INSTALL_DIR_ABS/apgmera/bindings/python" >> "$APGMAN_PATH_FILE"
-echo "Created $APGMAN_PATH_FILE"
 
 addToShellConfig() {
     local configFile="$1"
