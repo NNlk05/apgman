@@ -1,3 +1,8 @@
+"""
+Python bindings for APGman
+"""
+
+__version__ = "0.2.0"
 import subprocess
 from pathlib import Path
 

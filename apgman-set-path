@@ -9,27 +9,3 @@ fi
 INSTALL_DIR_ABS="$(cd "$INSTALL_DIR" && pwd)"
 BUILDS_DIR="$INSTALL_DIR_ABS/builds"
 mkdir -p "$BUILDS_DIR"
-
-SCRIPTS_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
-
-APGMAN_PATH_FILE="$HOME/.apgman/path-exports"
-echo "# apgman path exports" > "$APGMAN_PATH_FILE"
-echo "export PATH=\$PATH:$BUILDS_DIR" >> "$APGMAN_PATH_FILE"
-echo "export PATH=\$PATH:$SCRIPTS_DIR" >> "$APGMAN_PATH_FILE"
-
-addToShellConfig() {
-    local configFile="$1"
-    if [ -f "$configFile" ]; then
-        if ! grep -q "source $APGMAN_PATH_FILE" "$configFile"; then
-            echo "" >> "$configFile"
-            echo "# Add apgman to path" >> "$configFile"
-            echo "source $APGMAN_PATH_FILE" >> "$configFile"
-            echo "Added apgman to PATH in $configFile"
-            echo "You will need to source $configFile or start a new shell."
-        fi
-    fi
-}
-
-addToShellConfig "$HOME/.bashrc"
-addToShellConfig "$HOME/.zshrc"
-addToShellConfig "$HOME/.profile"

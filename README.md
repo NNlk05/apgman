@@ -1,6 +1,6 @@
 # apgman
 
-APFsearch MANager
+APGsearch MANager
 I got tired of compiling and recompiling apgsearch, and managing all of the builds, so I wrote this
 
 > **\*Note:** apgman is a toolkit of Bash shell scripts.\*

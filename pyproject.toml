@@ -1,0 +1,13 @@
+[build-system]
+requires = ["flit_core >=3.11,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "apgman"
+authors = [{name = "NNlk05"}]
+readme = "README.md"
+dynamic = ["version", "description"]
+license = {file = "LICENSE"}
+
+[project.urls]
+Home = "https://github.com/NNlk05/apgman"
