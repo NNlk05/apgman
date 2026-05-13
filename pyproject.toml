@@ -17,12 +17,11 @@ classifiers = [
     "Topic :: Utilities",
 ]
 
-[tool.setuptools.packages.find]
-where = ["."]
-include = ["apgman*"]
+[tool.setuptools]
+packages = ["apgman"]
 
 [tool.setuptools.package-data]
-"apgman.scripts" = ["*"]
+apgman = ["../apgman-*"]
 
 [project.urls]
 Home = "https://github.com/NNlk05/apgman"
