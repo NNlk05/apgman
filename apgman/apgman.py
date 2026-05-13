@@ -1,10 +1,14 @@
 import subprocess
 import os
-from importlib import resources
+from pathlib import Path
 from typing import Optional
 
 def _get_script_path(name: str) -> str:
-    return str(resources.files("apgman.scripts").joinpath(name))
+    current_dir: Path = Path(__file__).resolve().parent
+    script_path: Path = current_dir / "scripts" / name
+    if not script_path.exists():
+        script_path = current_dir.parent / name
+    return str(script_path)
 
 def _run_command(command_parts: list[str]) -> str:
     executable_path: str = command_parts[0]
