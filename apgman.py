@@ -1,24 +1,36 @@
-"""
-Python bindings for APGman
-"""
-
-__version__ = "0.2.0"
 import subprocess
-from pathlib import Path
+import os
+from importlib import resources
+from typing import Optional
 
-script_dir = Path(__file__).resolve().parent
+def _get_script_path(name: str) -> str:
+    return str(resources.files("apgman.scripts").joinpath(name))
 
-def _run_command(command: str):
-    result = subprocess.run(command, shell=True, capture_output=True, text=True)
+def _run_command(command_parts: list[str]) -> str:
+    for i, part in enumerate(command_parts):
+        if i == 0 and os.path.isfile(part):
+            os.chmod(part, 0o755)
+    
+    result = subprocess.run(
+        command_parts, 
+        capture_output=True, 
+        text=True,
+        check=False
+    )
     return result.stdout
 
-def init(apgman_path: str = None):
-    if apgman_path == None:
-        apgman_path = ""
-    _run_command(f"{script_dir}/apgman-init {apgman_path}")
+def init(path: Optional[str] = None) -> str:
+    script = _get_script_path("apgman-init")
+    return _run_command([script, path or ""])
 
-def build(rule: str = "", symm: str = ""):
-    _run_command(f"{script_dir}/apgman-build {rule} {symm}")
+def build(rule: str = "b3s23", symmetry: str = "C1") -> str:
+    script = _get_script_path("apgman-build")
+    return _run_command([script, rule, symmetry])
 
-def run(rule: str = "", symm: str = ""):
-    _run_command(f"{script_dir}/apgman-run {rule} {symm}")
+def run(rule: str = "b3s23", symmetry: str = "C1", *args: str) -> str:
+    script = _get_script_path("apgman-run")
+    return _run_command([script, rule, symmetry, *args])
+
+def add_rule(rule_file: str) -> str:
+    script = _get_script_path("apgman-add-rule")
+    return _run_command([script, rule_file])

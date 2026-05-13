@@ -1,13 +1,22 @@
 [build-system]
-requires = ["flit_core >=3.11,<4"]
-build-backend = "flit_core.buildapi"
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "apgman"
+version = "0.2.0"
+description = "Python bindings for APGman shell scripts"
 authors = [{name = "NNlk05"}]
 readme = "README.md"
-dynamic = ["version", "description"]
 license = {file = "LICENSE"}
+requires-python = ">=3.9"
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"apgman.scripts" = ["*"]
 
 [project.urls]
 Home = "https://github.com/NNlk05/apgman"
