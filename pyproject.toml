@@ -8,14 +8,13 @@ version = "0.2.0"
 description = "Python bindings for APGman shell scripts"
 authors = [{name = "NNlk05"}]
 readme = "README.md"
-license = {file = "LICENSE"}
+license = { text = "CC0-1.0" }
 requires-python = ">=3.9"
 dependencies = []
 classifiers = [
-"Programming Language :: Python :: 3",
-"License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
-"Operating System :: POSIX :: Linux",
-"Topic :: Utilities",
+    "Programming Language :: Python :: 3",
+    "Operating System :: POSIX :: Linux",
+    "Topic :: Utilities",
 ]
 
 [tool.setuptools.packages.find]
