@@ -1,6 +1,6 @@
 # APGman Python API README
 
-> FOR THE MAIN README PLEASE SEE [README.md](README.md)
+> FOR THE MAIN README PLEASE SEE [README.md](https://github.com/NNlk05/apgman/blob/main/README.md)
 
 ## To use
 
