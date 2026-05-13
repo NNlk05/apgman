@@ -1,5 +1,6 @@
 import subprocess
 import os
+import sys
 from pathlib import Path
 from typing import Optional
 
@@ -15,13 +16,24 @@ def _run_command(command_parts: list[str]) -> str:
     if os.path.isfile(executable_path):
         os.chmod(executable_path, 0o755)
     
-    result: subprocess.CompletedProcess = subprocess.run(
-        command_parts, 
-        capture_output=True, 
+    process: subprocess.Popen = subprocess.Popen(
+        command_parts,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
         text=True,
-        check=False
+        bufsize=1,
+        universal_newlines=True
     )
-    return result.stdout
+    
+    output_lines: list[str] = []
+    if process.stdout:
+        for line in process.stdout:
+            sys.stdout.write(line)
+            sys.stdout.flush()
+            output_lines.append(line)
+            
+    process.wait()
+    return "".join(output_lines)
 
 def init(path: Optional[str] = None) -> str:
     return _run_command([_get_script_path("apgman-init"), path or ""])
