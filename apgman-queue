@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+set -uo pipefail
+
+INPUT_FILE=$1
+
+while IFS=';' read -r time build_flags run_flags; do
+    [[ -z "${time// }" ]] && continue
+
+    echo
+    echo "=== timeout=${time}s ==="
+
+    echo "Building..."
+    bash -c "apgman-build $build_flags" || \
+        echo "(build failed, continuing)"
+
+    echo "Running..."
+    timeout "$time" bash -c "apgman-run $run_flags"
+
+    case $? in
+        0)
+            echo "run finished"
+            ;;
+        124)
+            echo "run timed out (${time}s)"
+            ;;
+        *)
+            echo "run failed"
+            ;;
+    esac
+
+done < "$INPUT_FILE"
